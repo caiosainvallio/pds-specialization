@@ -1,0 +1,72 @@
+# Course 1 ------------------------------------------------
+## week 1 -------------------------------------------------
+
+AWS Data Wrangler
+```
+!pip install aws wrangler
+
+import awswrangler as wr
+impot pandas as pd
+
+# Retrieving the data directly from Amazon S3
+df = wr.s3.read_csv(path='s3://bucket/prefix/')
+```
+
+
+
+AWS Glue Data Catalog
+```
+import awswrangler as wr
+
+# Create a database in the 
+# AWS Glue Data Catalog
+wr.catalog.create_database(name=...)
+
+# Create CSV table (metadata only) in the
+# AWS Glue Data Catalog
+wr.catalog.create_cav_table(table=..., column_types=..., ...)
+```
+
+
+Amazon Athena
+```
+import awswrangler as wr
+
+# Create Amazon Athena S3 bucket
+wr.athena.create_athena_bucket()
+
+# Execute SQL query on Amazon Athena
+df = wr.athena.read_sql_query(sql=..., database=...)
+```
+
+
+Get the num of words in a text colum of a dataset
+```
+SELECT CARDINALITY(SPLIT(review_body, ' ')) as nu,_words
+FROM dsoaws_deep_learning.reviews
+```
+
+
+
+
+
+
+
+
+
+## week 2 -------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
