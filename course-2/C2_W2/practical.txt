@@ -1,0 +1,75 @@
+Exercise 1
+
+s3_input_train_data = sagemaker.inputs.TrainingInput(
+    ### BEGIN SOLUTION - DO NOT delete this comment for grading purposes
+    s3_data=processed_train_data_s3_uri # Replace None
+    ### END SOLUTION - DO NOT delete this comment for grading purposes
+)
+
+
+Exercise 2
+
+s3_input_validation_data = sagemaker.inputs.TrainingInput(
+    ### BEGIN SOLUTION - DO NOT delete this comment for grading purposes
+    s3_data=processed_validation_data_s3_uri # Replace None
+    ### END SOLUTION - DO NOT delete this comment for grading purposes
+)
+
+
+
+Exercise 3
+
+data_channels = {
+    ### BEGIN SOLUTION - DO NOT delete this comment for grading purposes
+    'train': s3_input_train_data, # Replace None
+    'validation': s3_input_validation_data # Replace None
+    ### END SOLUTION - DO NOT delete this comment for grading purposes
+}
+
+
+Exercise 4
+
+def configure_model():
+    classes = [-1, 0, 1]
+
+    config = RobertaConfig.from_pretrained(
+        PRE_TRAINED_MODEL_NAME, 
+        num_labels=len(classes),
+        id2label={
+            ### BEGIN SOLUTION - DO NOT delete this comment for grading purposes
+            0: -1, # Replace all None
+            1: 0, # Replace all None
+            2: 1, # Replace all None
+            ### END SOLUTION - DO NOT delete this comment for grading purposes
+        },
+        label2id={
+            -1: 0,
+            0: 1,
+            1: 2,
+        }
+    )
+    
+    config.output_attentions=True
+
+    return config
+
+
+Exercise 5
+
+estimator.fit(
+    ### BEGIN SOLUTION - DO NOT delete this comment for grading purposes
+    inputs=data_channels, # Replace None
+    ### END SOLUTION - DO NOT delete this comment for grading purposes
+    wait=False
+)
+
+
+Exercise 6
+
+### BEGIN SOLUTION - DO NOT delete this comment for grading purposes
+training_job_status_primary = estimator.latest_training_job.describe()['TrainingJobStatus'] # Replace None
+### END SOLUTION - DO NOT delete this comment for grading purposes
+print('Training Job status: {}'.format(training_job_status_primary))
+
+
+
