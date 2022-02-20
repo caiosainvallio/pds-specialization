@@ -75,3 +75,7 @@ FROM dsoaws_deep_learning.reviews
 
 
 
+
+
+
+
